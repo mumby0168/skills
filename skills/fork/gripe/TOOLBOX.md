@@ -10,6 +10,7 @@ Reuse the repo's tools. These are defaults for gaps, not a list to install.
 | Unused code and dependencies | Existing compiler and analyzer diagnostics | [Knip](https://knip.dev/explanations/why-use-knip) for unused files, exports, and dependencies; verify entry points and framework configuration, including consumers in related workspaces |
 | Custom structural patterns | [Semgrep](https://docs.semgrep.dev/supported-languages), when existing rules cannot express the check | Same |
 
+- For structural matches or rewrites that Semgrep cannot handle reliably, test [ast-grep](https://ast-grep.github.io/guide/introduction) as a fallback for C# and TypeScript. Rules are language-specific; syntax matches do not establish type identity. Keep one enforcement tool per concern.
 - Keep compiler and type checks as the baseline. Formatters handle layout; analyzers handle code rules.
 - Choose the cheapest reliable check. Use compiler-aware analysis when types or symbol identity matter. Verify the installed Semgrep edition and language support against the actual examples.
 - For architecture boundaries, start with project references, import restrictions, and existing architecture tests. Add a dedicated library only for a demonstrated gap.
