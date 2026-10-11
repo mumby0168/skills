@@ -12,7 +12,7 @@ Handle one **gripe** per session. Keep turns short and focused on the current de
 
 2. **Choose the change.** Present three concrete treatments using the format below. Recommend one and wait for the user to choose. Keep enforcement for the next turn.
 
-3. **Prove a guardrail.** Inspect existing checks and their local/CI wiring first, including checks that exist but do not run. Prefer fast, deterministic enforcement in this order:
+3. **Prove a guardrail.** For .NET or TypeScript, read [TOOLBOX.md](TOOLBOX.md) when choosing enforcement. Inspect existing checks and their local/CI wiring first, including checks that exist but do not run. Prefer fast, deterministic enforcement in this order:
    - Existing compiler, formatter, linter, analyzer, or architecture test.
    - A small custom check in the existing toolchain, such as an ESLint rule, .NET analyzer, or Semgrep rule.
    - Written guidance when reliable detection fails, needs disproportionate machinery, or the user requests it. Use existing coding standards; otherwise scoped `AGENTS.md`. Keep `AGENTS.md` to pointers where standards exist.
