@@ -24,7 +24,7 @@ codex plugin add mumby-skills@mumby
 
 Restart each agent after installation. Confirm the fork's skills are available before removing Matt's installed plugin; the exact replacement commands are in [FORK.md](./FORK.md#replace-matts-plugin).
 
-The plugin ships the inherited promoted skills and `upstream-update`. [change-preview](./skills/fork/in-progress/change-preview/SKILL.md) and [slice-preview](./skills/fork/in-progress/slice-preview/SKILL.md) are in progress and are excluded until their release decision is made.
+The plugin ships the inherited promoted skills, `upstream-update`, and **[gripe](./skills/fork/gripe/SKILL.md)** for focused code complaints. [change-preview](./skills/fork/in-progress/change-preview/SKILL.md) and [slice-preview](./skills/fork/in-progress/slice-preview/SKILL.md) are in progress and are excluded until their release decision is made.
 
 Run `/setup-matt-pocock-skills` once per repository to configure the inherited workflow.
 

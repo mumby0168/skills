@@ -1,0 +1,5 @@
+interface:
+  display_name: "Gripe"
+  short_description: "Turn a code complaint into a fix and guardrail"
+policy:
+  allow_implicit_invocation: false

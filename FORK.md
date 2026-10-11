@@ -10,6 +10,7 @@ This repository is a fork of [mattpocock/skills](https://github.com/mattpocock/s
 | `CLAUDE.md` | Removed. Do not restore the upstream root file or its `AGENTS.md` symlink. Preserve useful new upstream guidance by merging it into `AGENTS.md`. |
 | `FORK.md` | This maintenance contract, including an accurate list of fork-owned changes. |
 | `skills/fork/upstream-update/`, `skills/fork/README.md` | The fork's user-invoked upstream update skill and its index. Keep them local and separate from inherited skills. |
+| `skills/fork/gripe/` | User-invoked code complaint workflow, tested guardrails, and Codex metadata. |
 | `skills/fork/in-progress/` | Local `change-preview` and `slice-preview` skills, their Codex metadata, and their index. They are read-only and remain out of the plugin manifest until promoted. |
 | `.claude-plugin/plugin.json`, `README.md` | Fork plugin identity, version, shipped skill registration, installation instructions, and fork skill links. Preserve unrelated upstream explanations. |
 | `.claude-plugin/marketplace.json` | `mumby` marketplace and `mumby-skills` plugin identity, owned by Billy Mumby and sourced from this fork. |
