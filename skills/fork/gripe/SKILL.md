@@ -27,21 +27,65 @@ Handle one **gripe** per session. Keep turns short and focused on the current de
 
 ## Options format
 
-Use concrete names and one sentence per tradeoff. Example for a nested decision:
+Use concrete names and one sentence per tradeoff. Show the current code once, then a fenced code block for each option using the project's language and real names. Include enough surrounding logic and any extracted helper to compare behavior; avoid ellipses in the changed logic.
+
+Example:
+
+Current:
+
+```ts
+return article.isApproved ? (article.hasAssets ? "ready" : "blocked") : "draft";
+```
 
 **1. Guard clauses (recommended)**
-Change: Return early for invalid states, then show the normal path.
+
+```ts
+if (!article.isApproved) {
+  return "draft";
+}
+
+if (!article.hasAssets) {
+  return "blocked";
+}
+
+return "ready";
+```
+
 Pro: Makes the decision order visible.
 Con: Adds several return points.
 
 **2. Named predicate**
-Change: Extract the eligibility condition into `CanPublish`.
-Pro: Names the business rule.
-Con: Readers must follow a call to inspect it.
+
+```ts
+function canPublish(article: Article): boolean {
+  return article.isApproved && article.hasAssets;
+}
+
+if (canPublish(article)) {
+  return "ready";
+}
+
+return article.isApproved ? "blocked" : "draft";
+```
+
+Pro: Names the eligibility rule.
+Con: Splits the status decision between the helper and its caller.
 
 **3. Local expansion**
-Change: Replace the nested ternary with explicit branches in place.
-Pro: Keeps the logic together.
+
+```ts
+if (article.isApproved) {
+  if (article.hasAssets) {
+    return "ready";
+  } else {
+    return "blocked";
+  }
+} else {
+  return "draft";
+}
+```
+
+Pro: Keeps the decision tree together.
 Con: Retains the nesting.
 
 Which treatment fits? We will choose a guardrail after this decision.
