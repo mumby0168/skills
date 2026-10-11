@@ -5,7 +5,7 @@ Reuse the repo's tools. These are defaults for gaps, not a list to install.
 | Concern | .NET | TypeScript |
 | --- | --- | --- |
 | Formatting | [dotnet format](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-format) with `.editorconfig` | [Prettier](https://prettier.io/docs/comparison) |
-| Code quality | [Built-in .NET analyzers](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview) | [ESLint with typescript-eslint](https://typescript-eslint.io/docs/) |
+| Code quality | [Built-in .NET analyzers](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview) first; [Roslynator](https://josefpihrt.github.io/docs/roslynator/) when a specific diagnostic fills a gap, enabled selectively before writing a custom rule | [ESLint with typescript-eslint](https://typescript-eslint.io/docs/) |
 | Architecture boundaries | [ArchUnitNET](https://github.com/TNG/ArchUnitNET) for compiled dependency tests when project references cannot enforce the boundary; scope to selected assemblies or namespaces | [dependency-cruiser](https://github.com/sverweij/dependency-cruiser) for dependency boundaries and cycles when existing import restrictions are insufficient; scope rules to service or domain paths |
 | Unused code and dependencies | Existing compiler and analyzer diagnostics | [Knip](https://knip.dev/explanations/why-use-knip) for unused files, exports, and dependencies; verify entry points and framework configuration, including consumers in related workspaces |
 | Custom structural patterns | [Semgrep](https://docs.semgrep.dev/supported-languages), when existing rules cannot express the check | Same |
