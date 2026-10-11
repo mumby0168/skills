@@ -1,15 +1,15 @@
 {
-  "name": "mattpocock",
+  "name": "mumby",
   "owner": {
-    "name": "Matt Pocock",
-    "url": "https://www.aihero.dev"
+    "name": "Billy Mumby",
+    "url": "https://github.com/mumby0168"
   },
-  "description": "Matt Pocock's skills for real engineering, as an installable Claude Code plugin.",
+  "description": "Billy Mumby's installable fork of Matt Pocock's agent skills.",
   "plugins": [
     {
-      "name": "mattpocock-skills",
+      "name": "mumby-skills",
       "source": "./",
-      "description": "Matt Pocock's agent skills for real engineering (grilling, spec/ticket flows, TDD, code review, domain modelling and more).",
+      "description": "Engineering and productivity skills inherited from Matt Pocock, with Billy Mumby's fork workflows.",
       "category": "engineering",
       "keywords": [
         "engineering",

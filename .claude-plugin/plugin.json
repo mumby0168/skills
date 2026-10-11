@@ -1,13 +1,13 @@
 {
-  "name": "mattpocock-skills",
-  "version": "1.3.1",
-  "description": "Matt Pocock's agent skills for real engineering: grilling, spec/ticket flows, TDD, code review, domain modelling and more. Plug-and-play, not vibe coding.",
+  "name": "mumby-skills",
+  "version": "1.3.1-mumby.1",
+  "description": "Billy Mumby's fork of Matt Pocock's engineering and productivity skills, with fork-specific workflows.",
   "author": {
-    "name": "Matt Pocock",
-    "url": "https://www.aihero.dev"
+    "name": "Billy Mumby",
+    "url": "https://github.com/mumby0168"
   },
-  "homepage": "https://www.aihero.dev/s/skills-newsletter",
-  "repository": "https://github.com/mattpocock/skills",
+  "homepage": "https://github.com/mumby0168/skills",
+  "repository": "https://github.com/mumby0168/skills",
   "license": "MIT",
   "keywords": [
     "engineering",
@@ -45,6 +45,7 @@
     "./skills/productivity/teach",
     "./skills/productivity/to-questionnaire",
     "./skills/productivity/wait-what",
-    "./skills/productivity/writing-for-agents"
+    "./skills/productivity/writing-for-agents",
+    "./skills/fork/upstream-update"
   ]
 }

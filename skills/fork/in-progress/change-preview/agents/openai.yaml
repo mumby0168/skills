@@ -1,0 +1,3 @@
+interface:
+  display_name: "Change preview"
+  short_description: "Preview a proposed code change before implementation"

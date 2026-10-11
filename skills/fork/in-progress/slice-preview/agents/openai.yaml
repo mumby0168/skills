@@ -1,0 +1,3 @@
+interface:
+  display_name: "Slice preview"
+  short_description: "Compare one change with safe stages for an existing ticket"

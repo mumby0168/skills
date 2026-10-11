@@ -1,110 +1,32 @@
-<p>
-  <a href="https://www.aihero.dev/s/skills-newsletter">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skills-repo-dark_2x.png">
-      <source media="(prefers-color-scheme: light)" srcset="https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png">
-      <img alt="Skills" src="https://res.cloudinary.com/total-typescript/image/upload/v1777382277/skill-repo-light_2x.png" width="369">
-    </picture>
-  </a>
-</p>
+# Mumby Skills
 
-# Skills For Real Engineers
+A fork of [Matt Pocock's skills](https://github.com/mattpocock/skills). Matt wrote the inherited skills and the original explanations below. Billy Mumby maintains this fork and its [fork workflows](./skills/fork/README.md).
 
-[![skills.sh](https://skills.sh/b/mattpocock/skills)](https://skills.sh/mattpocock/skills)
+## Install the fork
 
-My agent skills that I use every day to do real engineering - not vibe coding.
+The fork uses its own marketplace, `mumby`, and plugin, `mumby-skills`. These commands work after the changes are pushed to `mumby0168/skills`. For a local test of the uncommitted checkout, see [FORK.md](./FORK.md#test-the-plugin).
 
-Developing real applications is hard. Approaches like GSD, BMAD, and Spec-Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve.
-
-These skills are designed to be small, easy to adapt, and composable. They work with any model. They're based on decades of engineering experience. Hack around with them. Make them your own. Enjoy.
-
-If you want to keep up with changes to these skills, and any new ones I create, you can join ~60,000 other devs on my newsletter:
-
-[Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)
-
-## Installation (30-second setup)
-
-A plugin updates itself. [skills.sh](https://skills.sh/mattpocock/skills) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.
-
-### 1. Get the skills
-
-<details>
-<summary><strong>Claude Code</strong></summary>
+### Claude Code
 
 ```bash
-claude plugin install mattpocock-skills@claude-plugins-official
+claude plugin marketplace add mumby0168/skills
+claude plugin install mumby-skills@mumby
 ```
 
-Updates itself by default.
+Claude Code 2.1.277 or later reads this repository's `AGENTS.md` directly. On older versions, run `claude update` before relying on the repository instructions. The plugin's skills can be installed separately from that instruction-file support.
 
-</details>
-
-<details>
-<summary><strong>Codex</strong></summary>
+### Codex
 
 ```bash
-codex plugin marketplace add mattpocock/skills
-codex plugin add mattpocock-skills@mattpocock
+codex plugin marketplace add mumby0168/skills
+codex plugin add mumby-skills@mumby
 ```
 
-Updates itself at startup.
+Restart each agent after installation. Confirm the fork's skills are available before removing Matt's installed plugin; the exact replacement commands are in [FORK.md](./FORK.md#replace-matts-plugin).
 
-</details>
+The plugin ships the inherited promoted skills and `upstream-update`. [change-preview](./skills/fork/in-progress/change-preview/SKILL.md) and [slice-preview](./skills/fork/in-progress/slice-preview/SKILL.md) are in progress and are excluded until their release decision is made.
 
-<details>
-<summary><strong>GitHub Copilot</strong> (CLI and VS Code)</summary>
-
-```bash
-copilot plugin marketplace add mattpocock/skills
-copilot plugin install mattpocock-skills@mattpocock
-```
-
-Then, once, add to `~/.copilot/settings.json`:
-
-```json
-{
-  "extraKnownMarketplaces": {
-    "mattpocock": { "source": { "source": "github", "repo": "mattpocock/skills" }, "autoUpdate": true }
-  }
-}
-```
-
-In VS Code, run **Chat: Install Plugin From Source** and enter `https://github.com/mattpocock/skills`. It updates daily.
-
-</details>
-
-<details>
-<summary><strong>Gemini CLI</strong> (manual updates)</summary>
-
-```bash
-gemini skills install https://github.com/mattpocock/skills.git --path skills/engineering
-gemini skills install https://github.com/mattpocock/skills.git --path skills/productivity
-```
-
-Re-run both commands to update.
-
-</details>
-
-<details>
-<summary><strong>Any other agent, or editable files</strong> (manual updates)</summary>
-
-```bash
-npx skills@latest add mattpocock/skills -a <agent>  # cursor, opencode, devin, windsurf, amp, pi; omit -a to choose
-```
-
-When the installer asks which skills to take, include `setup-matt-pocock-skills`. To update, run `npx skills@latest update`, and re-run `add` to pick up new skills.
-
-</details>
-
-### 2. Run `/setup-matt-pocock-skills`
-
-In your agent, run it once per repo. It will:
-
-- Ask you which issue tracker you want to use (GitHub, GitLab, local files, or anything else you describe)
-- Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)
-- Ask you where you want to save any docs we create
-
-### 3. Bam - you're ready to go.
+Run `/setup-matt-pocock-skills` once per repository to configure the inherited workflow.
 
 ## Why These Skills Exist
 
@@ -256,3 +178,9 @@ General workflow tools, not code-specific.
 
 - **[grilling](./skills/productivity/grilling/SKILL.md)**: Interview the user relentlessly about a plan, decision, or idea until every branch of the design tree is resolved. The reusable interview primitive behind `grill-me`, `grill-with-docs`, `triage`, `wayfinder` and `improve-codebase-architecture`.
 - **[writing-for-agents](./skills/productivity/writing-for-agents/SKILL.md)**: Writing documents for agents: skills, AGENTS.md/CLAUDE.md, and any doc an agent reaches by a pointer.
+
+### Fork maintenance
+
+This fork keeps its local changes and upstream update process in [FORK.md](./FORK.md). When using this fork as the installed plugin or a local skill source, run **[upstream-update](./skills/fork/upstream-update/SKILL.md)** by name to prepare an upstream merge on a review branch.
+
+The in-progress previews are available from a local skill link: **[change-preview](./skills/fork/in-progress/change-preview/SKILL.md)** shows a projected change tree and merge risk; **[slice-preview](./skills/fork/in-progress/slice-preview/SKILL.md)** compares safe implementation stages for an existing ticket. Both are read-only and are not in the plugin manifest.

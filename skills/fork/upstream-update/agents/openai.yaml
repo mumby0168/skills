@@ -1,0 +1,5 @@
+interface:
+  display_name: "Upstream update"
+  short_description: "Update this fork from Matt Pocock's upstream"
+policy:
+  allow_implicit_invocation: false
