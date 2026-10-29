@@ -1,0 +1,3 @@
+interface:
+  display_name: "Review comments"
+  short_description: "Severity-labelled PR comments written for the author"

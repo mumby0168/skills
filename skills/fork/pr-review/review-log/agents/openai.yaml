@@ -1,0 +1,3 @@
+interface:
+  display_name: "Review log"
+  short_description: "HTML overview and growing log for a PR review"

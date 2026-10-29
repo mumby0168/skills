@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "*",
+        "files": [
+          "skills/fork/pr-review/review-log/template.html"
+        ],
+        "createdAt": "2026-10-29T20:08:27.028Z",
+        "reason": "Claude: fonts match the diagram-design skill system the user approved in the layout page"
+      }
+    ]
+  }
+}

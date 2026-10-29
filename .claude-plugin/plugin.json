@@ -1,6 +1,6 @@
 {
   "name": "mumby-skills",
-  "version": "1.3.1-mumby.9",
+  "version": "1.3.1-mumby.10",
   "description": "Billy Mumby's fork of Matt Pocock's engineering and productivity skills, with fork-specific workflows.",
   "author": {
     "name": "Billy Mumby",
@@ -47,6 +47,12 @@
     "./skills/productivity/wait-what",
     "./skills/productivity/writing-for-agents",
     "./skills/fork/upstream-update",
-    "./skills/fork/gripe"
+    "./skills/fork/gripe",
+    "./skills/fork/pr-review/guided-review",
+    "./skills/fork/pr-review/pr-intent",
+    "./skills/fork/pr-review/pr-map",
+    "./skills/fork/pr-review/pr-lenses",
+    "./skills/fork/pr-review/review-log",
+    "./skills/fork/pr-review/review-comments"
   ]
 }
