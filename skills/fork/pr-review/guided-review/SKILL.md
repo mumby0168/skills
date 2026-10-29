@@ -27,7 +27,12 @@ Arguments, all optional and in any order:
 
 4. **Stops.** The reviewer drives, in any order, and may name an area outside the suggestions; treat it as a new stop. For each stop:
    - Read only that stop's hunks, and the tests in that stop's Shape chunk.
-   - Show one real excerpt (25 lines at most) with short inline notes, then one or two lines of why.
+   - Show one real excerpt (25 lines at most, in one block or two small ones), then one or two lines of why. The excerpt is **formatted code** in the language's own style, so it reads like the file:
+     - A header line names the path and line range: `ScheduleConsolidation.cs:38-85`. The code lines carry no line numbers.
+     - Braces on every body, one statement per line, spaces around operators, a blank line between logical blocks.
+     - Notes are short `//` comments on their own line above the code they describe, or brief at a line's end. Prose stays in the explanation below the block.
+     - A `// ...` line stands for skipped unchanged code.
+     - If a code-style skill is available, call the Skill tool with it for the language's conventions.
    - For a behaviour change, add a **scenario walk**: one named example traced through the new code.
    - For a contract change (API model, event, DB table), call the Skill tool with `render-contract` for the change, including its reach.
    - Show **test coverage** in about 6 lines, after the excerpt and scenario walk:

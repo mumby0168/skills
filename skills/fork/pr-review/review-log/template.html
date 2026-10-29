@@ -106,7 +106,8 @@
     stop section shape (every <pre> gets a copy button automatically):
     <section class="stop" id="stop-{k}">
       <h3><span class="num">{k}</span>{title}</h3>
-      <pre>{excerpt}</pre>
+      <pre><span class="c">// {path}:{start}-{end}</span>
+{excerpt, formatted as in the terminal}</pre>
       <div class="diagram">{svg, only when drawn}</div>
       <h3>Tests <span class="label">{not run | passed | failed}</span></h3>
       <ul>{covered: <li>{scenario sentence} <code>{test path}</code></li>; gaps: <li>gap: {untested behaviour}</li>; weak: <li>weak: {test}, {why it would pass on wrong code}</li>}</ul>
