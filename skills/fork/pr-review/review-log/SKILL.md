@@ -12,15 +12,16 @@ Start from [template.html](template.html). Edit in place with exact replacements
 The page is a **map** the reviewer glances at while sparring in the terminal, then the record of their review journey.
 
 - The overview fits about one screen: why, tree, stops, flags. Detail lives in stop sections.
-- The tree comes first under the why; the reviewer reads shape before code.
+- The why is **scannable**: a one-sentence lead, then one-line items. Acceptance criteria read as plain-word bullets, each with its story id as a trailing tag. Copy the intent snippet's wording; it is already in Simplified Technical English.
+- The tree comes first under the why, one small tree per stop, so the reviewer sees which files make up which concern before reading code.
 - Accent marks only the why, `!` flags and `blocking` comments.
 - One diagram per stop at most, and only where it carries what the excerpt cannot.
 - The reviewer's explain-back goes in word for word.
 
 ## Operations
 
-- **Create.** Copy the template. Fill the header (repo, PR number and title, mode, depth, date, and the log's absolute path in the eyebrow's `data-copy`), the why from the intent snippet, the tree from the map snippet with `pr-lenses` flags merged in as `!` after the stop number, the stop list, the worth-a-look flags, and the not-checked list.
-- **Append a stop.** Insert one `<section class="stop">` before `<!-- stops:end -->`: stop number and title, the excerpt shown, the reviewer's explain-back word for word, candidate comments, and a diagram only when the guide asked for one. For a diagram, call the Skill tool with `diagram-design`, then copy only its `<svg>` element into the section.
+- **Create.** Copy the template. Fill the header (repo, PR number and title, mode, depth, date, and the log's absolute path in the eyebrow's `data-copy`), the why from the intent snippet, one Shape chunk per map-snippet chunk with `pr-lenses` flags merged in as `!` after the file they point at, the skip lines under the chunks, the stop list, the worth-a-look flags, and the not-checked list.
+- **Append a stop.** Insert one `<section class="stop">` before `<!-- stops:end -->`: stop number and title, the excerpt as shown (its path and line range in the `<pre>`'s header line), the test coverage (covered, gaps, weak, run status), the reviewer's explain-back word for word, candidate comments, and a diagram only when the guide asked for one. For a diagram, call the Skill tool with `diagram-design`, then copy only its `<svg>` element into the section.
 - **Finish.** Fill the comments and open questions from `review-comments` at `<!-- finish -->`, and list the unvisited stops.
 
 Done when the file renders with the new section and the full path has been printed.
