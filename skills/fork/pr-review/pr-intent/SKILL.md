@@ -33,12 +33,20 @@ Done when every reference is fetched or listed as a gap, and history for the dep
 
 ## Snippet
 
-40 lines at most:
+40 lines at most. The intent is the first thing the reviewer reads, so make it **scannable**: a little context first, then short items. Write in ASD-STE100 Simplified Technical English: short sentences, one idea each, active voice, the same word for the same thing. Use the terms in the repo's `GLOSSARY.md` (follow `GLOSSARY-MAP.md` when there is one). Each item is one line; say what a criterion means in plain words and keep its ticket number as a trailing tag.
 
 ```
 ## Intent
-<5 lines at most, quoting the ticket or PR, with the source id. "No stated intent" when none.>
-Acceptance: <criteria from the ticket, or "none stated">
+<one sentence: what this PR makes true, and for whom. "No stated intent" when none.>
+- Source: <ticket id>: "<the shortest quote that carries the goal>"
+- Rule: <the one invariant the change must keep, when the ticket states one>
+- Scope: <where this PR sits in a stack or project, and what it leaves for later>
+
+Acceptance (<"none stated" when none>):
+- <criterion in plain words> (<story or AC id>)
+
+Deviations from the ticket (omit when none):
+- <what differs, needing sign-off>
 
 ## Related tickets
 - <ID> <title> (<status>): <why it matters to this PR>
