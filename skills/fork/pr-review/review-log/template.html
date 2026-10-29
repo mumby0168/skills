@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PR {n} Review</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --paper: #f5f5f5; --paper-2: #ececec; --ink: #2d3142; --muted: #4f5d75; --soft: #5a6580;
+      --rule: rgba(45,49,66,0.12); --accent: #bf4520; --accent-tint: rgba(191,69,32,0.08); --link: #2e5aa8; --add: #2f7a4a;
+      --sans: 'Geist', system-ui, sans-serif; --serif: 'Instrument Serif', 'Times New Roman', serif; --mono: 'Geist Mono', ui-monospace, Menlo, monospace;
+    }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); padding: 2.5rem 1rem; font-size: 0.95rem; line-height: 1.55; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .eyebrow { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+    h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.7rem, 3vw + 1rem, 2.4rem); line-height: 1.1; margin-bottom: 0.6rem; }
+    h2 { font-family: var(--serif); font-weight: 400; font-size: 1.55rem; margin: 2.5rem 0 0.6rem; }
+    h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    p, li { color: var(--muted); max-width: 72ch; }
+    ul, ol { padding-left: 1.2rem; }
+    code { font-family: var(--mono); font-size: 0.85em; background: var(--paper-2); padding: 0 0.25rem; border-radius: 2px; }
+    pre { font-family: var(--mono); font-size: 0.85rem; line-height: 1.55; background: #fff; border: 1px solid var(--rule); border-radius: 6px; padding: 1rem; overflow-x: auto; color: var(--ink); margin: 0.6rem 0; }
+    pre .a { color: var(--add); } pre .m { color: var(--link); } pre .d, pre .flag { color: var(--accent); } pre .c { color: var(--soft); }
+    table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--rule); font-size: 0.9rem; margin: 0.6rem 0; }
+    th { text-align: left; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); background: var(--paper-2); padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--rule); }
+    td { padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    .why { background: var(--accent-tint); border: 1px solid var(--rule); border-radius: 6px; padding: 1rem; color: var(--ink); }
+    .stop { background: #fff; border: 1px solid var(--rule); border-radius: 6px; padding: 1.25rem; margin-top: 1rem; }
+    .stop .num { font-family: var(--mono); color: var(--soft); margin-right: 0.4rem; }
+    .explain { background: var(--accent-tint); border-radius: 6px; padding: 0.75rem 1rem; color: var(--ink); margin: 0.6rem 0; }
+    .label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; border: 1px solid var(--rule); border-radius: 2px; padding: 0 0.35rem; white-space: nowrap; }
+    .label.blocking { color: var(--accent); border-color: var(--accent); }
+    .diagram { overflow-x: auto; background: var(--paper); border-radius: 6px; margin: 0.6rem 0; }
+    .diagram svg { display: block; width: 100%; }
+    .footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 0.75rem; color: var(--soft); }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <p class="eyebrow">{repo} · PR {n} · {mode} · {depth} · {date}</p>
+  <h1>{PR title}</h1>
+
+  <h2>Why</h2>
+  <div class="why">
+    <!-- intent: quoted intent with source ids, then acceptance criteria -->
+  </div>
+
+  <h2>Shape</h2>
+<pre>
+<!-- tree: pr-map tree; wrap A in <span class="a">, M in <span class="m">, D in <span class="d">, skip lines in <span class="c">, "!" flags in <span class="flag"> -->
+</pre>
+
+  <h2>Stops</h2>
+  <ol>
+    <!-- stops: one <li> per stop: <strong>title</strong>, files, one line why -->
+  </ol>
+
+  <h2>Worth a look</h2>
+  <p><!-- blast radius line --></p>
+  <table>
+    <tr><th>Where</th><th>Lens</th><th>Look at</th><th>Why</th></tr>
+    <!-- flags: one <tr> per pr-lenses flag -->
+  </table>
+
+  <h3>Not checked</h3>
+  <ul>
+    <!-- not-checked: from pr-lenses and pr-intent gaps -->
+  </ul>
+
+  <h2>Review</h2>
+  <!--
+    stop section shape:
+    <section class="stop" id="stop-{k}">
+      <h3><span class="num">{k}</span>{title}</h3>
+      <pre>{excerpt}</pre>
+      <div class="diagram">{svg, only when drawn}</div>
+      <div class="explain"><strong>In my words:</strong> {explain-back}</div>
+      <ul>{candidate comments: path:line, label, note}</ul>
+    </section>
+  -->
+  <!-- stops:end -->
+
+  <!-- finish: <h2>Comments</h2> table (Where, Label, Comment), <h2>Open questions</h2> list, <h3>Not visited</h3> list -->
+
+  <div class="footer">guided-review · log grows as the review goes</div>
+</div>
+</body>
+</html>

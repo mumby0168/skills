@@ -1,0 +1,5 @@
+interface:
+  display_name: "Guided review"
+  short_description: "Walk through a PR: HTML overview, then terminal sparring"
+policy:
+  allow_implicit_invocation: false
