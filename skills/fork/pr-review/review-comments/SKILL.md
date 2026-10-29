@@ -32,4 +32,4 @@ Then an **Open questions** list for the author: things the review could not sett
 
 Done when every candidate is a comment or is dropped by the mode, and each comment names its line, label and suggested change.
 
-Post only when the user asks, and only the comments they approve, as one review: `gh api repos/{owner}/{repo}/pulls/{n}/reviews` with a `comments` array.
+Never post on your own. Post only after the user confirms the exact comments, and only those, as one review: `gh api repos/{owner}/{repo}/pulls/{n}/reviews` with a `comments` array.

@@ -14,23 +14,22 @@ Arguments, all optional and in any order:
 
 ## Flow
 
-1. **Size.** Run `gh pr view <pr> --json number,title,body,author,url,headRefName,baseRefName,additions,deletions,changedFiles,commits`. Fetch the head without touching the working tree: `git fetch origin pull/<n>/head:pr-<n>`; the diff is `git diff origin/<base>...pr-<n>`. Mark the PR **AI-authored** when its commits carry an AI `Co-Authored-By` trailer, its body says it was generated, or the author is a bot. Set auto depth:
+1. **Size.** Run `gh pr view <pr> --json number,title,body,author,url,headRefName,baseRefName,additions,deletions,changedFiles,commits`. Fetch the head without touching the working tree: `git fetch origin pull/<n>/head:pr-<n>`; the diff is `git diff origin/<base>...pr-<n>`. Set auto depth:
    - `near`: under 200 changed lines in one module, with no contract touched.
    - `wide`: over 1000 changed lines, or touches a contract (stored events, migrations, public API, message schemas) or shared code.
    - `area`: everything else.
 
-   Done when PR facts, mode, depth and the AI-authored mark are known.
+   Done when PR facts, mode and depth are known.
 
 2. **Scout.** Dispatch three subagents in parallel, one each for `pr-intent`, `pr-map` and `pr-lenses`. Each prompt tells the subagent to call the Skill tool with its scout's name and passes the PR number, repo path, diff ref, mode and depth. `pr-lenses` also gets the intent snippet when you run it after `pr-intent`; parallel is fine, and it then judges ticket fit from the PR body alone. Done when all three snippets are back.
 
-3. **Overview.** Call the Skill tool with `review-log` to create the overview page from the three snippets. Give the reviewer its full absolute path. In the terminal, say only: the why in one sentence, the numbered stops, and "pick a number or say next". Done when the page exists and the reviewer has picked.
+3. **Overview.** Call the Skill tool with `review-log` to create the overview page from the three snippets. Give the reviewer its full absolute path. In the terminal, say only: the why in one sentence, the stops and focus areas as **suggestions** (the riskiest marked), and "pick any, or name your own area". Done when the page exists and the reviewer has picked.
 
-4. **Stops.** The reviewer drives. For each stop:
+4. **Stops.** The reviewer drives, in any order, and may name an area outside the suggestions; treat it as a new stop. For each stop:
    - Read only that stop's hunks.
    - Show one real excerpt (25 lines at most) with short inline notes, then one or two lines of why.
    - For a behaviour change, add a **scenario walk**: one named example traced through the new code.
-   - For a contract change, add an **impact list**: producer, each consumer, stored data, with `CHECK` on anything unverified.
-   - For an AI-authored PR, offer the tests stop second.
+   - For a contract change, show a real payload as a `diff` block of JSON: `-` lines before, `+` lines after, values taken from tests, fixtures or seed data. Then name each producer, consumer and stored copy it reaches, with `CHECK` on anything unverified.
    - Spar: answer with `path:line` evidence; say "not verified" for anything you have not run.
    - Draw only when a picture carries what the excerpt cannot: components connect differently, a before/after topology, a state machine, a flow across services. Pass it to `review-log` with the stop.
    - **Checkpoint**: ask "In your words, what does this stop do?" If the answer misses something, name the gap in one line.
@@ -39,9 +38,11 @@ Arguments, all optional and in any order:
 
    Done per stop when the explain-back and candidates are in the log.
 
-   Reviewer commands: `next`, a stop number, `overview`, `deeper` (one subagent re-runs the relevant scout on this stop only), `spread` (re-run `pr-intent` one depth wider), `done`.
+   Reviewer commands: `next` (take the top suggestion), a stop number, `overview`, `deeper` (one subagent re-runs the relevant scout on this stop only), `spread` (re-run `pr-intent` one depth wider), `done`.
 
-5. **Wrap up.** On `done`, or after the last stop, call the Skill tool with `review-comments` for the candidates and mode, then with `review-log` to finish the page with the comments, open questions and unvisited stops. Give the full path again. Comments stay drafts; post them only when the reviewer asks, and only the ones they approve.
+5. **Wrap up.** On `done`, or after the last stop, call the Skill tool with `review-comments` for the candidates and mode, then with `review-log` to finish the page with the comments, open questions and unvisited stops. Give the full path again.
+
+   Comments stay drafts. Post only after the reviewer confirms, in this conversation, the exact comments to post; then post those and nothing else. Without that confirmation, never post.
 
 ## Turn shape
 

@@ -12,7 +12,7 @@ Inputs: PR number, repo path, diff ref.
 1. **List files** with status and size: `git diff --name-status` and `--numstat` on the diff ref.
 2. **Fold noise** into one `skip:` line per folder: lockfiles, generated code, snapshots, vendored code, bulk fixtures or notes.
 3. **Find entry points**: the endpoint, handler, consumer, command, UI route or skill file where the change starts running.
-4. **Plan stops.** One stop is one concept: one call chain, one contract, or one test group. Aim for 3 to 9. Order:
+4. **Suggest stops.** One stop is one concept: one call chain, one contract, or one test group. Aim for 3 to 9. They are suggestions the reviewer picks from; list them in this order:
    - The core change that carries the intent first.
    - Risky stops early: contracts, data, shared code.
    - Tests beside the code they prove.
@@ -37,5 +37,5 @@ src/contracts/
 docs/                              skip: 4 files
 
 ## Stops
-1. <title>: <files with hunk anchor text>. <one line on why this is a stop>
+1. <title> (risk: high | med | low): <files with hunk anchor text>. <one line on why this is a stop>
 ```
