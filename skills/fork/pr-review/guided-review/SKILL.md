@@ -23,7 +23,7 @@ Arguments, all optional and in any order:
 
 2. **Scout.** Dispatch three subagents in parallel, one each for `pr-intent`, `pr-map` and `pr-lenses`. Each prompt tells the subagent to call the Skill tool with its scout's name and passes the PR number, repo path, diff ref, mode and depth. `pr-lenses` also gets the intent snippet when you run it after `pr-intent`; parallel is fine, and it then judges ticket fit from the PR body alone. Done when all three snippets are back.
 
-3. **Overview.** Call the Skill tool with `review-log` to create the overview page from the three snippets. Give the reviewer its full absolute path. In the terminal, say only: the why in one sentence, the stops and focus areas as **suggestions** (the riskiest marked), and "pick any, or name your own area". Done when the page exists and the reviewer has picked.
+3. **Overview.** Call the Skill tool with `review-log` to create the overview page from the three snippets. Print its full absolute path on its own line. In the terminal, say only: the why in one sentence, the stops and focus areas as **suggestions** (the riskiest marked), and "pick any, or name your own area". Done when the page exists and the reviewer has picked.
 
 4. **Stops.** The reviewer drives, in any order, and may name an area outside the suggestions; treat it as a new stop. For each stop:
    - Read only that stop's hunks.
@@ -40,7 +40,7 @@ Arguments, all optional and in any order:
 
    Reviewer commands: `next` (take the top suggestion), a stop number, `overview`, `deeper` (one subagent re-runs the relevant scout on this stop only), `spread` (re-run `pr-intent` one depth wider), `done`.
 
-5. **Wrap up.** On `done`, or after the last stop, call the Skill tool with `review-comments` for the candidates and mode, then with `review-log` to finish the page with the comments, open questions and unvisited stops. Give the full path again.
+5. **Wrap up.** On `done`, or after the last stop, call the Skill tool with `review-comments` for the candidates and mode, then with `review-log` to finish the page with the comments, open questions and unvisited stops. Print the full absolute path again.
 
    Comments stay drafts. Post only after the reviewer confirms, in this conversation, the exact comments to post; then post those and nothing else. Without that confirmation, never post.
 

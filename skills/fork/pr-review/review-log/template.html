@@ -8,39 +8,57 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --paper: #f5f5f5; --paper-2: #ececec; --ink: #2d3142; --muted: #4f5d75; --soft: #5a6580;
+      --paper: #f5f5f5; --paper-2: #ececec; --card: #ffffff; --ink: #2d3142; --muted: #4f5d75; --soft: #5a6580;
       --rule: rgba(45,49,66,0.12); --accent: #bf4520; --accent-tint: rgba(191,69,32,0.08); --link: #2e5aa8; --add: #2f7a4a;
       --sans: 'Geist', system-ui, sans-serif; --serif: 'Instrument Serif', 'Times New Roman', serif; --mono: 'Geist Mono', ui-monospace, Menlo, monospace;
     }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --paper: #1e2130; --paper-2: #272b3d; --card: #252938; --ink: #ecedf1; --muted: #b4bacb; --soft: #9aa2b8;
+        --rule: rgba(236,237,241,0.12); --accent: #f08a59; --accent-tint: rgba(240,138,89,0.12); --link: #8fb0ea; --add: #7cc79a;
+      }
+    }
+    :root[data-theme="dark"] {
+      --paper: #1e2130; --paper-2: #272b3d; --card: #252938; --ink: #ecedf1; --muted: #b4bacb; --soft: #9aa2b8;
+      --rule: rgba(236,237,241,0.12); --accent: #f08a59; --accent-tint: rgba(240,138,89,0.12); --link: #8fb0ea; --add: #7cc79a;
+    }
     body { font-family: var(--sans); background: var(--paper); color: var(--ink); padding: 2.5rem 1rem; font-size: 0.95rem; line-height: 1.55; }
     .container { max-width: 1000px; margin: 0 auto; }
-    .eyebrow { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+    .eyebrow { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
     h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.7rem, 3vw + 1rem, 2.4rem); line-height: 1.1; margin-bottom: 0.6rem; }
     h2 { font-family: var(--serif); font-weight: 400; font-size: 1.55rem; margin: 2.5rem 0 0.6rem; }
     h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
     p, li { color: var(--muted); max-width: 72ch; }
     ul, ol { padding-left: 1.2rem; }
+    li { margin-bottom: 0.3rem; }
     code { font-family: var(--mono); font-size: 0.85em; background: var(--paper-2); padding: 0 0.25rem; border-radius: 2px; }
-    pre { font-family: var(--mono); font-size: 0.85rem; line-height: 1.55; background: #fff; border: 1px solid var(--rule); border-radius: 6px; padding: 1rem; overflow-x: auto; color: var(--ink); margin: 0.6rem 0; }
+    pre { font-family: var(--mono); font-size: 0.85rem; line-height: 1.55; background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 1rem; overflow-x: auto; color: var(--ink); margin: 0.6rem 0; }
     pre .a { color: var(--add); } pre .m { color: var(--link); } pre .d, pre .flag { color: var(--accent); } pre .c { color: var(--soft); }
-    table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--rule); font-size: 0.9rem; margin: 0.6rem 0; }
-    th { text-align: left; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); background: var(--paper-2); padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--rule); }
+    table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--rule); font-size: 0.9rem; margin: 0.6rem 0; }
+    th { text-align: left; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); background: var(--paper-2); padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--rule); }
     td { padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
     .why { background: var(--accent-tint); border: 1px solid var(--rule); border-radius: 6px; padding: 1rem; color: var(--ink); }
-    .stop { background: #fff; border: 1px solid var(--rule); border-radius: 6px; padding: 1.25rem; margin-top: 1rem; }
+    .stop { background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 1.25rem; margin-top: 1rem; }
     .stop .num { font-family: var(--mono); color: var(--soft); margin-right: 0.4rem; }
     .explain { background: var(--accent-tint); border-radius: 6px; padding: 0.75rem 1rem; color: var(--ink); margin: 0.6rem 0; }
-    .label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; border: 1px solid var(--rule); border-radius: 2px; padding: 0 0.35rem; white-space: nowrap; }
+    .label { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em; border: 1px solid var(--rule); border-radius: 2px; padding: 0 0.35rem; white-space: nowrap; }
     .label.blocking { color: var(--accent); border-color: var(--accent); }
-    .diagram { overflow-x: auto; background: var(--paper); border-radius: 6px; margin: 0.6rem 0; }
+    /* Diagrams from diagram-design carry light colours, so they keep a light panel in both themes. */
+    .diagram { overflow-x: auto; background: #f5f5f5; border-radius: 6px; margin: 0.6rem 0; }
     .diagram svg { display: block; width: 100%; }
+    .copy-btn { font-family: var(--mono); font-size: 0.75rem; color: var(--soft); background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; padding: 0.1rem 0.45rem; margin-left: 0.5rem; cursor: pointer; vertical-align: middle; }
+    .copy-btn:hover, .copy-btn:focus-visible { color: var(--ink); border-color: var(--soft); }
+    .pre-wrap { position: relative; }
+    .pre-wrap > .copy-btn { position: absolute; top: 0.5rem; right: 0.5rem; margin: 0; }
+    .theme-btn { position: fixed; top: 1rem; right: 1rem; font-family: var(--mono); font-size: 0.75rem; color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 4px; padding: 0.3rem 0.6rem; cursor: pointer; }
     .footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 0.75rem; color: var(--soft); }
   </style>
 </head>
 <body>
+<button class="theme-btn" type="button" aria-label="Toggle light and dark mode">theme</button>
 <div class="container">
 
-  <p class="eyebrow">{repo} · PR {n} · {mode} · {depth} · {date}</p>
+  <p class="eyebrow" data-copy="{absolute log path}">{repo} · PR {n} · {mode} · {depth} · {date}</p>
   <h1>{PR title}</h1>
 
   <h2>Why</h2>
@@ -53,16 +71,16 @@
 <!-- tree: pr-map tree; wrap A in <span class="a">, M in <span class="m">, D in <span class="d">, skip lines in <span class="c">, "!" flags in <span class="flag"> -->
 </pre>
 
-  <h2>Stops</h2>
+  <h2>Suggested stops</h2>
   <ol>
-    <!-- stops: one <li> per stop: <strong>title</strong>, files, one line why -->
+    <!-- stops: one <li data-copy="stop {k}"> per suggestion: <strong>title</strong> (risk), files, one line why -->
   </ol>
 
   <h2>Worth a look</h2>
   <p><!-- blast radius line --></p>
   <table>
     <tr><th>Where</th><th>Lens</th><th>Look at</th><th>Why</th></tr>
-    <!-- flags: one <tr> per pr-lenses flag -->
+    <!-- flags: one <tr data-copy="look at {path:line}: {look at}"> per pr-lenses flag -->
   </table>
 
   <h3>Not checked</h3>
@@ -72,20 +90,58 @@
 
   <h2>Review</h2>
   <!--
-    stop section shape:
+    stop section shape (every <pre> gets a copy button automatically):
     <section class="stop" id="stop-{k}">
       <h3><span class="num">{k}</span>{title}</h3>
       <pre>{excerpt}</pre>
       <div class="diagram">{svg, only when drawn}</div>
-      <div class="explain"><strong>In my words:</strong> {explain-back}</div>
-      <ul>{candidate comments: path:line, label, note}</ul>
+      <div class="explain" data-copy><strong>In my words:</strong> {explain-back}</div>
+      <ul>{candidate comments: <li data-copy="{path:line} {note}">path:line, label, note</li>}</ul>
     </section>
   -->
   <!-- stops:end -->
 
-  <!-- finish: <h2>Comments</h2> table (Where, Label, Comment), <h2>Open questions</h2> list, <h3>Not visited</h3> list -->
+  <!-- finish: <h2>Comments</h2> table (Where, Label, Comment), each <tr data-copy="{comment text as it would be posted}">; <h2>Open questions</h2> list, each <li data-copy>; <h3>Not visited</h3> list, each <li data-copy="stop {k}"> -->
 
   <div class="footer">guided-review · log grows as the review goes</div>
 </div>
+<script>
+  // Theme: follows the OS until toggled; the choice is kept per viewer when storage allows.
+  (function () {
+    var root = document.documentElement;
+    try { var saved = localStorage.getItem('review-log-theme'); if (saved) root.dataset.theme = saved; } catch (e) {}
+    document.querySelector('.theme-btn').addEventListener('click', function () {
+      var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      root.dataset.theme = dark ? 'light' : 'dark';
+      try { localStorage.setItem('review-log-theme', root.dataset.theme); } catch (e) {}
+    });
+  })();
+
+  // Copy: data-copy="text" copies that text; a bare data-copy copies the element's own text; every <pre> copies its content.
+  (function () {
+    function copy(text, btn) {
+      var done = function () { btn.textContent = 'copied'; setTimeout(function () { btn.textContent = 'copy'; }, 1200); };
+      if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done, fallback); } else { fallback(); }
+      function fallback() {
+        var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); done(); } catch (e) {} document.body.removeChild(t);
+      }
+    }
+    function button(getText) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'copy-btn'; b.textContent = 'copy';
+      b.addEventListener('click', function (e) { e.stopPropagation(); copy(getText(), b); });
+      return b;
+    }
+    document.querySelectorAll('[data-copy]').forEach(function (el) {
+      var text = el.getAttribute('data-copy') || el.innerText.trim();
+      (el.tagName === 'TR' ? el.lastElementChild : el).appendChild(button(function () { return text; }));
+    });
+    document.querySelectorAll('pre').forEach(function (pre) {
+      var wrap = document.createElement('div'); wrap.className = 'pre-wrap';
+      pre.parentNode.insertBefore(wrap, pre); wrap.appendChild(pre);
+      wrap.appendChild(button(function () { return pre.innerText; }));
+    });
+  })();
+</script>
 </body>
 </html>
