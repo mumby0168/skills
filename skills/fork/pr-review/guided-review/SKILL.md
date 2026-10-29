@@ -26,17 +26,22 @@ Arguments, all optional and in any order:
 3. **Overview.** Call the Skill tool with `review-log` to create the overview page from the three snippets. Print its full absolute path on its own line. In the terminal, say only: the why in one sentence, the stops and focus areas as **suggestions** (the riskiest marked), and "pick any, or name your own area". Done when the page exists and the reviewer has picked.
 
 4. **Stops.** The reviewer drives, in any order, and may name an area outside the suggestions; treat it as a new stop. For each stop:
-   - Read only that stop's hunks.
+   - Read only that stop's hunks, and the tests in that stop's Shape chunk.
    - Show one real excerpt (25 lines at most) with short inline notes, then one or two lines of why.
    - For a behaviour change, add a **scenario walk**: one named example traced through the new code.
    - For a contract change, show a real payload as a `diff` block of JSON: `-` lines before, `+` lines after, values taken from tests, fixtures or seed data. Then name each producer, consumer and stored copy it reaches, with `CHECK` on anything unverified.
+   - Show **test coverage** in about 6 lines, after the excerpt and scenario walk:
+     - Covered: each test that proves this stop's behaviour, as a plain scenario sentence made from its name, with its `path`.
+     - Gaps: each behaviour or edge case this stop changes that no test covers.
+     - Weak: a test that would still pass if the code did the wrong thing, and why.
+     - End with `not run` unless you executed the tests this session; then give the result.
    - Spar: answer with `path:line` evidence; say "not verified" for anything you have not run.
    - Draw only when a picture carries what the excerpt cannot: components connect differently, a before/after topology, a state machine, a flow across services. Pass it to `review-log` with the stop.
    - **Checkpoint**: ask "In your words, what does this stop do?" If the answer misses something, name the gap in one line.
    - Keep each candidate comment the reviewer wants, with its `path:line`.
    - Call the Skill tool with `review-log` to append the stop.
 
-   Done per stop when the explain-back and candidates are in the log.
+   Done per stop when the test coverage, explain-back and candidates are in the log.
 
    Reviewer commands: `next` (take the top suggestion), a stop number, `overview`, `deeper` (one subagent re-runs the relevant scout on this stop only), `spread` (re-run `pr-intent` one depth wider), `done`.
 

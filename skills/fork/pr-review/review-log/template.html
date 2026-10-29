@@ -108,6 +108,8 @@
       <h3><span class="num">{k}</span>{title}</h3>
       <pre>{excerpt}</pre>
       <div class="diagram">{svg, only when drawn}</div>
+      <h3>Tests <span class="label">{not run | passed | failed}</span></h3>
+      <ul>{covered: <li>{scenario sentence} <code>{test path}</code></li>; gaps: <li>gap: {untested behaviour}</li>; weak: <li>weak: {test}, {why it would pass on wrong code}</li>}</ul>
       <div class="explain" data-copy><strong>In my words:</strong> {explain-back}</div>
       <ul>{candidate comments: <li data-copy="{path:line} {note}">path:line, label, note</li>}</ul>
     </section>

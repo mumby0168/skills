@@ -21,7 +21,7 @@ The page is a **map** the reviewer glances at while sparring in the terminal, th
 ## Operations
 
 - **Create.** Copy the template. Fill the header (repo, PR number and title, mode, depth, date, and the log's absolute path in the eyebrow's `data-copy`), the why from the intent snippet, one Shape chunk per map-snippet chunk with `pr-lenses` flags merged in as `!` after the file they point at, the skip lines under the chunks, the stop list, the worth-a-look flags, and the not-checked list.
-- **Append a stop.** Insert one `<section class="stop">` before `<!-- stops:end -->`: stop number and title, the excerpt shown, the reviewer's explain-back word for word, candidate comments, and a diagram only when the guide asked for one. For a diagram, call the Skill tool with `diagram-design`, then copy only its `<svg>` element into the section.
+- **Append a stop.** Insert one `<section class="stop">` before `<!-- stops:end -->`: stop number and title, the excerpt shown, the test coverage (covered, gaps, weak, run status), the reviewer's explain-back word for word, candidate comments, and a diagram only when the guide asked for one. For a diagram, call the Skill tool with `diagram-design`, then copy only its `<svg>` element into the section.
 - **Finish.** Fill the comments and open questions from `review-comments` at `<!-- finish -->`, and list the unvisited stops.
 
 Done when the file renders with the new section and the full path has been printed.
