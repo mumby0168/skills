@@ -1,0 +1,3 @@
+interface:
+  display_name: "Render contract"
+  short_description: "Annotated JSONC and schema trees for API, event and DB contracts"

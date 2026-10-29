@@ -29,7 +29,7 @@ Arguments, all optional and in any order:
    - Read only that stop's hunks, and the tests in that stop's Shape chunk.
    - Show one real excerpt (25 lines at most) with short inline notes, then one or two lines of why.
    - For a behaviour change, add a **scenario walk**: one named example traced through the new code.
-   - For a contract change, show a real payload as a `diff` block of JSON: `-` lines before, `+` lines after, values taken from tests, fixtures or seed data. Then name each producer, consumer and stored copy it reaches, with `CHECK` on anything unverified.
+   - For a contract change (API model, event, DB table), call the Skill tool with `render-contract` for the change, including its reach.
    - Show **test coverage** in about 6 lines, after the excerpt and scenario walk:
      - Covered: each test that proves this stop's behaviour, as a plain scenario sentence made from its name, with its `path`.
      - Gaps: each behaviour or edge case this stop changes that no test covers.

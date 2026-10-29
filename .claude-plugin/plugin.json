@@ -53,6 +53,7 @@
     "./skills/fork/pr-review/pr-map",
     "./skills/fork/pr-review/pr-lenses",
     "./skills/fork/pr-review/review-log",
-    "./skills/fork/pr-review/review-comments"
+    "./skills/fork/pr-review/review-comments",
+    "./skills/fork/pr-review/render-contract"
   ]
 }

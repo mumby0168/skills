@@ -23,6 +23,7 @@ Guided PR review: an HTML overview first, then terminal sparring stop by stop, w
 - **[pr-lenses](./pr-review/pr-lenses/SKILL.md)**: Light flags on tests, ticket fit, codebase patterns and blast radius.
 - **[review-log](./pr-review/review-log/SKILL.md)**: The HTML overview page and growing review log.
 - **[review-comments](./pr-review/review-comments/SKILL.md)**: Severity-labelled comments written for the author.
+- **[render-contract](./pr-review/render-contract/SKILL.md)**: API, event and DB contracts, or changes to them, as annotated JSONC or a schema tree.
 
 ## In progress
 
